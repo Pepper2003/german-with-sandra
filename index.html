@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>German with Sandra — Learn German Online</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --purple: #534AB7;
+      --purple-light: #EEEDFE;
+      --purple-mid: #AFA9EC;
+      --purple-dark: #3C3489;
+      --teal: #1D9E75;
+      --teal-light: #E1F5EE;
+      --amber: #D4840A;
+      --amber-light: #FEF3E2;
+      --text: #1A1A18;
+      --muted: #5F5E5A;
+      --border: #E2E0D8;
+      --bg: #F9F8F6;
+      --white: #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* ── Nav ── */
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-size: 1rem; font-weight: 700; color: var(--purple-dark); display: flex; align-items: center; gap: 8px; }
+    .nav-logo span { font-size: 1.2rem; }
+    .nav-cta { background: var(--purple); color: var(--white); border: none; border-radius: 8px; padding: 9px 20px; font-size: 0.88rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: opacity 0.15s; }
+    .nav-cta:hover { opacity: 0.88; }
+
+    /* ── Hero ── */
+    .hero { max-width: 1080px; margin: 0 auto; padding: 5rem 2rem 4rem; display: grid; grid-template-columns: 1fr 420px; gap: 4rem; align-items: center; }
+    @media(max-width:820px) { .hero { grid-template-columns: 1fr; padding: 3rem 1.5rem; gap: 2.5rem; } }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--teal-light); color: var(--teal); font-size: 0.8rem; font-weight: 600; padding: 5px 12px; border-radius: 20px; margin-bottom: 1.2rem; }
+    .hero-badge::before { content: "●"; font-size: 0.6rem; }
+    .hero h1 { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.15; color: var(--text); margin-bottom: 1.2rem; }
+    .hero h1 em { font-style: normal; color: var(--purple); }
+    .hero p { font-size: 1.05rem; color: var(--muted); margin-bottom: 2rem; max-width: 480px; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary { background: var(--purple); color: var(--white); border: none; border-radius: 10px; padding: 13px 28px; font-size: 1rem; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: opacity 0.15s, transform 0.15s; }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-secondary { background: var(--white); color: var(--purple); border: 2px solid var(--purple-mid); border-radius: 10px; padding: 12px 24px; font-size: 1rem; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.15s; }
+    .btn-secondary:hover { background: var(--purple-light); }
+    .hero-trust { margin-top: 2rem; display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: var(--muted); }
+    .stars { color: #F59E0B; letter-spacing: 2px; }
+
+    /* ── Photo card ── */
+    .photo-card { background: var(--white); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; box-shadow: 0 8px 40px rgba(83,74,183,0.10); }
+    .photo-placeholder { background: linear-gradient(135deg, var(--purple-light) 0%, #DDD8FB 100%); height: 320px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+    .photo-placeholder .avatar { width: 90px; height: 90px; border-radius: 50%; background: var(--purple-mid); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; }
+    .photo-placeholder p { font-size: 0.82rem; color: var(--purple-dark); font-weight: 500; }
+    .photo-placeholder small { font-size: 0.72rem; color: var(--purple-mid); }
+    .photo-card-info { padding: 1.25rem 1.5rem; }
+    .photo-card-info h3 { font-weight: 700; font-size: 1.05rem; color: var(--text); margin-bottom: 4px; }
+    .photo-card-info p { font-size: 0.85rem; color: var(--muted); }
+    .photo-card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .tag { background: var(--purple-light); color: var(--purple-dark); font-size: 0.75rem; font-weight: 500; padding: 3px 10px; border-radius: 20px; }
+
+    /* ── Section wrapper ── */
+    .section { max-width: 1080px; margin: 0 auto; padding: 4rem 2rem; }
+    @media(max-width:640px) { .section { padding: 3rem 1.5rem; } }
+    .section-label { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--purple); margin-bottom: 0.6rem; }
+    .section-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; color: var(--text); margin-bottom: 0.6rem; }
+    .section-sub { font-size: 1rem; color: var(--muted); max-width: 520px; }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    /* ── Why Sandra ── */
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 1.25rem; margin-top: 2.5rem; }
+    .why-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 1.4rem; }
+    .why-icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
+    .why-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .why-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.55; }
+
+    /* ── Lessons / Pricing ── */
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+    .pricing-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 16px; padding: 1.75rem; display: flex; flex-direction: column; transition: box-shadow 0.2s, border-color 0.2s; }
+    .pricing-card:hover { box-shadow: 0 6px 30px rgba(83,74,183,0.12); border-color: var(--purple-mid); }
+    .pricing-card.featured { border-color: var(--purple); background: linear-gradient(160deg, var(--white) 60%, var(--purple-light)); }
+    .pricing-tag { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 3px 10px; border-radius: 20px; display: inline-block; margin-bottom: 1rem; width: fit-content; }
+    .pricing-tag.speaking { background: var(--teal-light); color: var(--teal); }
+    .pricing-tag.structured { background: var(--purple-light); color: var(--purple-dark); }
+    .pricing-tag.mentorship { background: var(--amber-light); color: var(--amber); }
+    .pricing-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .pricing-card .price { font-size: 2rem; font-weight: 800; color: var(--purple-dark); margin: 0.75rem 0; }
+    .pricing-card .price span { font-size: 1rem; font-weight: 500; color: var(--muted); }
+    .pricing-card .price.free-call { font-size: 1.2rem; color: var(--amber); }
+    .pricing-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; flex: 1; margin-bottom: 1.5rem; }
+    .pricing-card ul { list-style: none; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+    .pricing-card ul li { font-size: 0.85rem; color: var(--muted); display: flex; align-items: flex-start; gap: 8px; }
+    .pricing-card ul li::before { content: "✓"; color: var(--teal); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .pricing-btn { display: block; text-align: center; padding: 12px; border-radius: 10px; font-size: 0.92rem; font-weight: 600; cursor: pointer; text-decoration: none; transition: opacity 0.15s; }
+    .pricing-btn.book { background: var(--purple); color: var(--white); }
+    .pricing-btn.book:hover { opacity: 0.88; }
+    .pricing-btn.call { background: var(--amber-light); color: var(--amber); border: 1.5px solid #F6D5A0; }
+    .pricing-btn.call:hover { background: #FDE8C3; }
+
+    /* ── How it works ── */
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+    .step { text-align: center; }
+    .step-num { width: 44px; height: 44px; border-radius: 50%; background: var(--purple-light); color: var(--purple-dark); font-weight: 800; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
+    .step h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .step p { font-size: 0.85rem; color: var(--muted); }
+    .step-arrow { display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--purple-mid); padding-top: 1.5rem; }
+    @media(max-width:640px) { .step-arrow { display: none; } }
+
+    /* ── CTA banner ── */
+    .cta-banner { background: linear-gradient(135deg, var(--purple-dark) 0%, var(--purple) 100%); border-radius: 20px; padding: 3.5rem 2.5rem; text-align: center; margin: 0 2rem 4rem; }
+    @media(max-width:640px) { .cta-banner { margin: 0 1rem 3rem; padding: 2.5rem 1.5rem; } }
+    .cta-banner h2 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; color: var(--white); margin-bottom: 0.75rem; }
+    .cta-banner p { color: rgba(255,255,255,0.75); font-size: 1rem; margin-bottom: 2rem; }
+    .cta-banner .btn-primary { background: var(--white); color: var(--purple-dark); }
+    .cta-banner .btn-primary:hover { background: var(--purple-light); }
+
+    /* ── Footer ── */
+    footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; font-size: 0.8rem; color: var(--muted); }
+
+    /* ── Loading overlay for Render wake-up ── */
+    #waking-toast { position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 12px 16px; font-size: 0.82rem; color: var(--muted); display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); z-index: 999; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+    #waking-toast.visible { opacity: 1; }
+    .spinner { width: 14px; height: 14px; border: 2px solid var(--border); border-top-color: var(--purple); border-radius: 50%; animation: spin 0.7s linear infinite; flex-shrink: 0; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <div class="nav-logo"><span>🇩🇪</span> German with Sandra</div>
+  <a href="#lessons" class="nav-cta">Book a lesson</a>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div>
+    <div class="hero-badge">Online · All levels welcome</div>
+    <h1>Learn German<br/>the <em>natural</em> way —<br/>with a native speaker</h1>
+    <p>Whether you're starting from scratch, preparing for an interview, or looking to finally speak with confidence — Sandra adapts every lesson to <em>you</em>.</p>
+    <div class="hero-actions">
+      <a href="#lessons" class="btn-primary">See lessons & pricing →</a>
+      <a href="#how" class="btn-secondary">How it works</a>
+    </div>
+    <div class="hero-trust">
+      <span class="stars">★★★★★</span>
+      <span>Native speaker · Flexible schedule · Instant booking</span>
+    </div>
+  </div>
+
+  <div class="photo-card">
+    <div class="photo-placeholder">
+      <div class="avatar">👩‍🏫</div>
+      <p>Sandra's photo goes here</p>
+      <small>Replace with a real photo in admin settings</small>
+    </div>
+    <div class="photo-card-info">
+      <h3>Sandra</h3>
+      <p>German teacher · Native speaker · Online lessons via Zoom</p>
+      <div class="photo-card-tags">
+        <span class="tag">🇩🇪 Native speaker</span>
+        <span class="tag">All levels</span>
+        <span class="tag">Zoom</span>
+        <span class="tag">Flexible hours</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- Why Sandra -->
+<section class="section">
+  <div class="section-label">Why students love it</div>
+  <h2 class="section-title">Real German, not textbook German</h2>
+  <p class="section-sub">Sandra combines the warmth of a friend with the structure of a professional teacher.</p>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">🗣️</div>
+      <h4>Native speaker fluency</h4>
+      <p>Learn the way Germans actually speak — real expressions, natural rhythm, no robotic phrases.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🎯</div>
+      <h4>Adapted to your goals</h4>
+      <p>Job interview? Travel trip? Just curious? Every lesson is tailored to what matters to you right now.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">📐</div>
+      <h4>Structure when you need it</h4>
+      <p>Grammar and exercises are there when you want them — never overwhelming, always purposeful.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">📅</div>
+      <h4>Book in seconds</h4>
+      <p>Pick a slot, pay securely via Stripe, get an instant confirmation — no back-and-forth emails.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- Pricing -->
+<section class="section" id="lessons">
+  <div class="section-label">Lessons & pricing</div>
+  <h2 class="section-title">Choose what fits you</h2>
+  <p class="section-sub">All lessons are 60 minutes, online via Zoom. No subscription — book as you go.</p>
+
+  <div class="pricing-grid">
+
+    <!-- Speaking lesson -->
+    <div class="pricing-card">
+      <span class="pricing-tag speaking">Most popular</span>
+      <h3>Speaking Lesson</h3>
+      <div class="price">€30 <span>/ 60 min</span></div>
+      <ul>
+        <li>Natural conversation practice</li>
+        <li>Pronunciation & fluency focus</li>
+        <li>Real-life vocabulary & expressions</li>
+        <li>Gentle corrections, lots of speaking time</li>
+        <li>All levels welcome</li>
+      </ul>
+      <a href="RENDER_URL_HERE" class="pricing-btn book" id="book-speaking">Book a speaking lesson →</a>
+    </div>
+
+    <!-- Structured lesson -->
+    <div class="pricing-card featured">
+      <span class="pricing-tag structured">Goal-oriented</span>
+      <h3>Structured Lesson</h3>
+      <div class="price">€40 <span>/ 60 min</span></div>
+      <ul>
+        <li>Interview or presentation prep</li>
+        <li>Grammar deep-dives & exercises</li>
+        <li>Exam preparation (Goethe, TestDaF…)</li>
+        <li>Written work & feedback</li>
+        <li>Clear objectives every session</li>
+      </ul>
+      <a href="RENDER_URL_HERE" class="pricing-btn book" id="book-structured">Book a structured lesson →</a>
+    </div>
+
+    <!-- Mentorship -->
+    <div class="pricing-card">
+      <span class="pricing-tag mentorship">Best value</span>
+      <h3>Mentorship Program</h3>
+      <div class="price free-call">Free 30-min call <span>to start</span></div>
+      <ul>
+        <li>1 to 3 month personalised program</li>
+        <li>Custom learning plan built for you</li>
+        <li>Mix of speaking & structured lessons</li>
+        <li>Progress tracking & materials included</li>
+        <li>Pricing discussed on the discovery call</li>
+      </ul>
+      <a href="mailto:SANDRA_EMAIL_HERE?subject=Mentorship%20Program%20Inquiry&body=Hi%20Sandra%2C%20I%27d%20love%20to%20book%20a%20free%20discovery%20call%20to%20discuss%20the%20mentorship%20program." class="pricing-btn call" id="book-mentorship">Book a free discovery call →</a>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- How it works -->
+<section class="section" id="how">
+  <div class="section-label">How it works</div>
+  <h2 class="section-title">From click to lesson in minutes</h2>
+  <p class="section-sub">No accounts, no waiting — just pick a time and show up.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h4>Choose your lesson</h4>
+      <p>Speaking, structured, or mentorship — pick what matches your goal today.</p>
+    </div>
+    <div class="step-arrow">→</div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h4>Pick a slot</h4>
+      <p>See Sandra's real-time availability and choose a date and time that works for you.</p>
+    </div>
+    <div class="step-arrow">→</div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h4>Pay securely</h4>
+      <p>Quick and safe payment via Stripe. Your booking is confirmed instantly.</p>
+    </div>
+    <div class="step-arrow">→</div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h4>Join on Zoom</h4>
+      <p>Get the Zoom link by email and show up — that's it. Sandra handles the rest.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Banner -->
+<div class="cta-banner">
+  <h2>Ready to speak German with confidence?</h2>
+  <p>Your first lesson is one click away. No subscription, no commitment.</p>
+  <a href="RENDER_URL_HERE" class="btn-primary" id="cta-book">Book your first lesson →</a>
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>🇩🇪 German with Sandra · Online German lessons via Zoom · Secure payments by Stripe</p>
+</footer>
+
+<!-- Waking toast (shows while Render is booting) -->
+<div id="waking-toast">
+  <div class="spinner"></div>
+  <span>Preparing your booking page…</span>
+</div>
+
+<script>
+  // ── CONFIG: replace these two values ──────────────────────────────────
+  const RENDER_URL = "https://german-with-sandra-booking.onrender.com";
+  const SANDRA_EMAIL = "sandra@example.com"; // replace with real email
+  // ─────────────────────────────────────────────────────────────────────
+
+  // Set all booking links
+  document.querySelectorAll("[id^='book-'], #cta-book").forEach(el => {
+    if (el.id === "book-mentorship") {
+      el.href = `mailto:${SANDRA_EMAIL}?subject=Mentorship%20Program%20Inquiry&body=Hi%20Sandra%2C%20I%27d%20love%20to%20book%20a%20free%20discovery%20call%20to%20discuss%20the%20mentorship%20program.`;
+    } else {
+      el.href = RENDER_URL;
+    }
+  });
+  document.querySelector(".nav-cta").href = RENDER_URL;
+
+  // ── Wake Render silently the moment the page loads ────────────────────
+  let renderReady = false;
+  const toast = document.getElementById("waking-toast");
+
+  // Show toast only after 2 seconds (so it doesn't flash on fast connections)
+  const toastTimer = setTimeout(() => {
+    if (!renderReady) toast.classList.add("visible");
+  }, 2000);
+
+  async function wakeRender() {
+    try {
+      await fetch(`${RENDER_URL}/api/ping`, { mode: "no-cors" });
+      renderReady = true;
+      clearTimeout(toastTimer);
+      toast.classList.remove("visible");
+    } catch (e) {
+      // Render still booting — retry in 3 seconds
+      setTimeout(wakeRender, 3000);
+    }
+  }
+
+  wakeRender();
+
+  // ── Smooth scroll for nav links ───────────────────────────────────────
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener("click", e => {
+      const target = document.querySelector(a.getAttribute("href"));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: "smooth" }); }
+    });
+  });
+</script>
+
+</body>
+</html>
